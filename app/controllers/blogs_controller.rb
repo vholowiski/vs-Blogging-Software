@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new.json
   def new
     @blog = Blog.new
-
+	@blog.user_id = current_user.id
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @blog }
@@ -44,7 +44,7 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(params[:blog])
-
+	@blog.user_id = current_user.id
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
@@ -60,7 +60,7 @@ class BlogsController < ApplicationController
   # PUT /blogs/1.json
   def update
     @blog = Blog.find(params[:id])
-
+	@blog.user_id = current_user.id
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
