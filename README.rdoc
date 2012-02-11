@@ -1,0 +1,4 @@
+== Dave's Blogging Software
+
+It is a rite of passage for any coder to write
+their own blogging software. This is mine.
