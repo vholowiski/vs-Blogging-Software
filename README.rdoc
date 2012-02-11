@@ -2,3 +2,13 @@
 
 It is a rite of passage for any coder to write
 their own blogging software. This is mine.
+
+Installation instructions: 
+
+* Creating an Administrative User: There is no really easy way to do this right now. 
+Administrative user is defined by the column is_admin in the users table being set to 1.
+You'll have to figure out a way to do this manually, either change the value via a 
+MySQL query, or temporarily set the user creation model to set this to 1.
+
+Once you have 1 administrative account created, then you can promote other users to
+admin within the interface.
