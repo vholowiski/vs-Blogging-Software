@@ -6,8 +6,8 @@
   <%= @blog.body.html_safe %>
 </p>
 
-<% if @blog.tags %>Tags: <% @blog.tags.each do |tag| %><%= tag.tag %> | <% end %><br/><% end %>
-<% if @blog.categories %>Categories: <% @blog.categories.each do |category| %><%= category.name %> | <% end %><br/><% end %>
+<% if @blog.categories %>Categories: <% @blog.categories.each do |category| %><%= link_to category.name, :controller=>'categories', :action=>'show', :id=> category.to_param %> | <% end %><br/><% end %>
+<% if @blog.tags %>Tags: <% @blog.tags.each do |tag| %><%= link_to tag.tag, :controller=>'tags', :action=>'show', :id=> tag.to_param %> | <% end %><br/><% end %>
 
 
 <% if user_signed_in? && current_user.id == @blog.user_id %><%= link_to 'Edit', edit_blog_path(@blog) %> | <% end %>

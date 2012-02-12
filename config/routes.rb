@@ -6,6 +6,8 @@ Davesblog::Application.routes.draw do
   resources :blogs
 
   devise_for :users
+  
+  match '/:id' => 'blogs#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

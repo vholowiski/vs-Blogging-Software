@@ -4,4 +4,8 @@ class Blog < ActiveRecord::Base
 	has_many :tags, :through => :blog_tags
 	has_many :categorizations
 	has_many :categories, :through => :categorizations
+	
+	def to_param
+	  "#{id}-#{title.downcase.gsub(/[^a-zA-Z0-9]+/, '-').gsub(/-{2,}/, '-').gsub(/^-|-$/, '')}"
+	end
 end
