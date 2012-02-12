@@ -65,6 +65,7 @@ GEM
     multi_json (1.0.4)
     multipart-post (1.1.4)
     orm_adapter (0.0.5)
+    pg (0.13.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.1)
@@ -126,6 +127,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  pg
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
   sqlite3
