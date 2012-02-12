@@ -1,4 +1,8 @@
 Davesblog::Application.routes.draw do
+  resources :categories
+
+  resources :tags
+
   resources :blogs
 
   devise_for :users
