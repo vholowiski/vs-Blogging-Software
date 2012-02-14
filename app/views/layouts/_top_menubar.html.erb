@@ -11,7 +11,7 @@
             <ul class="nav">
             		<li <% if current_page == "home" %>class="active"<% end %>><a href="/">Home</a></li>
             	<% @categories.each do |category| %>
-            		<li><%= link_to category.name, :controller=> 'categories', :action=> 'show', :id=> category.to_param %></li>
+            		<li <% if current_page == category.name %>class="active"<% end %>><%= link_to category.name, :controller=> 'categories', :action=> 'show', :id=> category.to_param %></li>
             	<% end %>
             	<% if user_signed_in? %>
 					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
