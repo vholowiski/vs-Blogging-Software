@@ -1,32 +1,43 @@
-<h1>Dave's Blog</h1>
+<% content_for :title, "The Vagabond Geek's Blog" %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Summary</th>
-    <th></th>
-  </tr>
+<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
 
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= link_to blog.title, blog.to_param %></td>
-    <td><%= blog.summary %></td>
-    <td><% if user_signed_in? && current_user.id == blog.user_id%><%= link_to 'Edit', edit_blog_path(blog) %><% end %></td>
-  </tr>
-<% end %>
-</table>
+<div class="container-fluid">
+  <div class="row-fluid">
+  	<%= render :partial=> 'layouts/sidebar' %>
+   <div class="span9">
+   	<% @blogs.each_with_index do |blog, index| %>
+   		<% if index==0 %>
+		  <div class="hero-unit">
+			<h1><%= blog.title %></h1>
+			<p><%= blog.summary %></p>
+			<p><a class="btn btn-primary btn-large" href="<%= '/'+ blog.to_param %>">Read</a></p>
+		  </div>
+   		<% else %>
+			<% if ((index-1) % 3)==0 %>
+				  <% if index==1 %>
+				  <% else %>
+				  	</div>
+				  <% end %>
+				  <div class="row-fluid">
+					<div class="span4">
+					  <h2><%= blog.title %></h2>
+					  <p><%= blog.summary %></p>
+					  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
+					</div><!--/span-->
+			<% else %>
+				<div class="span4">
+				  <h2><%= blog.title %></h2>
+				  <p><%= blog.summary %></p>
+				  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
+				</div><!--/span-->
+			<% end %>
+   		<% end %>
+   	<% end %>
+   	</div>
 
-<br />
-
-<% if user_signed_in? %><%= link_to 'New Blog', new_blog_path %><% end %>
-
-<% if @categories %>
-Categories
-<ul>
-<% @categories.each do |category| %>
-<li><%= link_to category.name, :controller=> 'categories', :action=> 'show', :id=> category.to_param %> (<%= category.blogs.count.to_s %>)</li>
-<% end %>
-</ul>
-<% end %>
-
+	</div><!--/span-->
+  </div>
+</div>
+      
 <%= render 'layouts/footer' %>

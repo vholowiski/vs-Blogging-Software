@@ -1,3 +1,7 @@
+<% content_for :title, "The Vagabond Geek's Blog" %>
+
+<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
+
 <p id="notice"><%= notice %></p>
 
   <h1><%= @blog.title %></h1>
@@ -12,3 +16,5 @@
 
 <% if user_signed_in? && current_user.id == @blog.user_id %><%= link_to 'Edit', edit_blog_path(@blog) %> | <% end %>
 <%= link_to 'Back', blogs_path %>
+
+<%= render 'layouts/footer' %>

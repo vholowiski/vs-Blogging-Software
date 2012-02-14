@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.all
-	@categories = Category.all
+	@categories = Category.all(:order=> 'name') #sort categories alphabetically
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }
@@ -17,7 +17,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @blog = Blog.find(params[:id])
-
+	@categories = Category.all(:order=> 'name') #sort categories alphabetically
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @blog }
