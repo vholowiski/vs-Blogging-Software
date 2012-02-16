@@ -3,14 +3,16 @@
 <%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
 <% if @blog.isdraft == 0 || (current_user && current_user.id==@blog.id)%>
 	
-	<div class="span1">&nbsp;</div><div class="span1">
+	<div class="span1">	
 	<% if @settings.sharethis && @settings.sharethis !="" %>
 		<p>
 			<%= raw @settings.sharethis %>
 		</p>
 	<% else %>
-	&nbsp;
+		&nbsp;
 	<% end %>
+	</div><div class="span1">
+		&nbsp;
 	</div>
 	<div class="span8">
 		<p id="notice"><%= notice %></p>
@@ -26,7 +28,7 @@
 			<%= raw @settings.disqus_code %>
 		<% end %>	
 	</div>
-	<div class="span2">
+	<div class="span1">
 	<% if @blog.tags.count >0 %>
 		<h2><b>Tagged: </b>
 		<% @blog.tags.each do |tag| %>
@@ -53,5 +55,6 @@
 	<%= raw @settings.facebook %>
 	<% end %>
 	</div>
+	<div class="span1">&nbsp;</div>
 <% end %>
 <%= render 'layouts/footer' %>
