@@ -9,7 +9,7 @@ gem 'rails', '3.2.1'
   gem 'sqlite3'
 
   gem 'pg'
-gem 'execjs'
+gem 'therubyracer'
 
 gem 'twitter'
 gem 'devise'
