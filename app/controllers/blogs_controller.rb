@@ -5,7 +5,8 @@ class BlogsController < ApplicationController
   before_filter :authenticate_user!, :except=> [:index, :show]
   
   def index
-    @blogs = Blog.all(:order=>"created_at DESC")
+  	#in the index, simply don't show drafts. In other views, show drafts if they are yours
+    @blogs = Blog.find(:all, :conditions=> "isdraft=0") 
 	@categories = Category.all(:order=> 'name') #sort categories alphabetically
 	
     respond_to do |format|

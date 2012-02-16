@@ -1,52 +1,57 @@
 <% content_for :title, @blog.title.to_s+" -> "+@settings.site_name.to_s %>
 
 <%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
-<div class="span1">&nbsp;</div><div class="span1">
-<% if @settings.sharethis && @settings.sharethis !="" %>
-	<p>
-		<%= raw @settings.sharethis %>
-	</p>
-<% else %>
-&nbsp;
-<% end %>
-</div>
-<div class="span8">
-	<p id="notice"><%= notice %></p>
+<% if @blog.isdraft == 0 || (current_user && current_user.id==@blog.id)%>
 	
-	  <h1><%= @blog.title %></h1>
-	  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %></i></p>
-	<p>
-	  <%= @blog.body.html_safe %>
-	</p>
-	<% if @settings.disqus_code && @settings.disqus_code !="" %>
-		<%= raw @settings.disqus_code %>
-	<% end %>	
-</div>
-<div class="span2">
-<% if @blog.tags.count >0 %>
-	<h2><b>Tagged: </b>
-	<% @blog.tags.each do |tag| %>
-		<%= link_to tag.tag, :controller=>'tags', :action=>'show', :id=> tag.to_param  %> 
+	<div class="span1">&nbsp;</div><div class="span1">
+	<% if @settings.sharethis && @settings.sharethis !="" %>
+		<p>
+			<%= raw @settings.sharethis %>
+		</p>
+	<% else %>
+	&nbsp;
 	<% end %>
-	</h2>
+	</div>
+	<div class="span8">
+		<p id="notice"><%= notice %></p>
+		<% if @blog.isdraft == 1 %>
+		<h1><font color="red">This Post is a Draft. Only you can see it</font></h1>
+		<% end %>
+		  <h1><%= @blog.title %></h1>
+		  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %></i></p>
+		<p>
+		  <%= @blog.body.html_safe %>
+		</p>
+		<% if @settings.disqus_code && @settings.disqus_code !="" %>
+			<%= raw @settings.disqus_code %>
+		<% end %>	
+	</div>
+	<div class="span2">
+	<% if @blog.tags.count >0 %>
+		<h2><b>Tagged: </b>
+		<% @blog.tags.each do |tag| %>
+			<%= link_to tag.tag, :controller=>'tags', :action=>'show', :id=> tag.to_param  %> 
+		<% end %>
+		</h2>
+		<br/>
+	<% else %>
+		&nbsp;
+	<% end %>
+	<% if @blog.categories.count > 0 %>
+		<% @blog.categories.each do |category| %>
+			<h3><%= link_to category.name, :controller=>'categories', :action=>'show', :id=> category.to_param %></h3>
+		<% end %>
+	<% else %>
+		&nbsp;
+	<% end %>
+	<% if @settings.plusone && @settings.plusone !="" %>
 	<br/>
-<% else %>
-	&nbsp;
-<% end %>
-<% if @blog.categories.count > 0 %>
-	<% @blog.categories.each do |category| %>
-		<h3><%= link_to category.name, :controller=>'categories', :action=>'show', :id=> category.to_param %></h3>
+	<%= raw @settings.plusone %>
 	<% end %>
-<% else %>
-	&nbsp;
+	<% if @settings.facebook && @settings.facebook != "" %>
+	<br/>
+	<%= raw @settings.facebook %>
+	<% end %>
+	</div>
 <% end %>
-<% if @settings.plusone && @settings.plusone !="" %>
-<br/>
-<%= raw @settings.plusone %>
-<% end %>
-<% if @settings.facebook && @settings.facebook != "" %>
-<br/>
-<%= raw @settings.facebook %>
-<% end %>
-</div>
 <%= render 'layouts/footer' %>

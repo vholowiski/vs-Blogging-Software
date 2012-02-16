@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+<div class="field">
+    Draft only: <%= f.check_box(:isdraft, options = {}, checked_value = "1", unchecked_value = "0") %>
+  </div>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>

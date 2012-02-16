@@ -9,8 +9,16 @@
 <center><h1>Tagged: <%= @tag.tag %></h1></center>
 
 <% @tag.blogs.each do |blog| %>
-  <h2><%= link_to blog.title,  '/'+blog.to_param %></h2>
-    <p><%= blog.summary %></p>
+  	<% if blog.isdraft == 0 %>
+	  <h2><%= link_to blog.title,  '/'+blog.to_param %></h2>
+	  <p><%= blog.summary %></p>
+    <% else %>
+    	<% if current_user && blog.user_id == current_user.id %>
+			<h2><i><%= link_to blog.title,  '/'+blog.to_param %> DRAFT</i></h2>
+			<p><i><%= blog.summary %></i></p>
+			<%= link_to 'Edit', :controller=> 'blogs', :action=>'edit' %>
+		<% end %>
+    <% end %>
 <% end %>
 
 <br />
