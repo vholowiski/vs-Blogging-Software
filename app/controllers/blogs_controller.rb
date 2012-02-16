@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   before_filter :authenticate_user!, :except=> [:index, :show]
   
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all(:order=>"created_at DESC")
 	@categories = Category.all(:order=> 'name') #sort categories alphabetically
 	
     respond_to do |format|

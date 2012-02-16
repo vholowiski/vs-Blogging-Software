@@ -19,12 +19,16 @@
       }
     </style>
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-<% if !Rails.env.production? && @settings.analytics && @settings.analytics != "" %>
-<%= raw @settings.analytics %>
+<% if !user_signed_in? %>
+	<% if @settings.analytics && @settings.analytics != "" %>
+		<%= raw @settings.analytics %>
+	<% else %>
+		<!-- No Analytics configured-->
+	<% end %>
 <% else %>
-<!-- No Analytics -->
+	<!--Not logged in, no analytics -->
 <% end %>
+
 </head>
 <body>
 
