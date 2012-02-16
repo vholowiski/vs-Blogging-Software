@@ -7,11 +7,6 @@
 	
 	  <h1><%= @blog.title %></h1>
 	  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %></i></p>
-	<% if @settings.sharethis && @settings.sharethis !="" %>
-	<p>
-		<%= raw @settings.sharethis %>
-	</p>
-	<% end %>
 	<p>
 	  <%= @blog.body.html_safe %>
 	</p>
@@ -36,6 +31,11 @@
 	<% end %>
 <% else %>
 	&nbsp;
+<% end %>
+<% if @settings.sharethis && @settings.sharethis !="" %>
+	<p>
+		<%= raw @settings.sharethis %>
+	</p>
 <% end %>
 <% if @settings.plusone && @settings.plusone !="" %>
 <br/>
