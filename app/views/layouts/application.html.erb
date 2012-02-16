@@ -28,7 +28,9 @@
 <% else %>
 	<!--Not logged in, no analytics -->
 <% end %>
-
+<% if @settings.sharethis_head && @settings.sharethis_head != "" %>
+<%= raw @settings.sharethis_head %>
+<% end %>
 </head>
 <body>
 
