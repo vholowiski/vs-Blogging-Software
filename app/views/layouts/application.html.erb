@@ -20,6 +20,11 @@
     </style>
     <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
+<% if !Rails.env.production? && @settings.analytics && @settings.analytics != "" %>
+<%= raw @settings.analytics %>
+<% else %>
+<!-- No Analytics -->
+<% end %>
 </head>
 <body>
 

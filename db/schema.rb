@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216004929) do
+ActiveRecord::Schema.define(:version => 20120216021755) do
 
   create_table "blog_tags", :force => true do |t|
     t.integer  "blog_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120216004929) do
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
     t.text     "disqus_code"
+    t.text     "analytics"
   end
 
   create_table "tags", :force => true do |t|
