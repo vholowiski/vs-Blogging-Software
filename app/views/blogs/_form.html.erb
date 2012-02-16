@@ -20,7 +20,7 @@
 <div class="field">
     Comma seperated categories:
     <%= text_field_tag(:categories) %>
-    <% if @categories %> Exisitng Categories: <%= @categories.each do |category| %><%=category.name %> | <% end %><% end %>
+    <% if @categories %> Exisitng Categories: <% @categories.each do |category| %><%=category.name %> | <% end %><% end %>
   </div>
   <div class="field">
     <%= f.label :tags %><br />
