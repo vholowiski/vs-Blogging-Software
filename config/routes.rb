@@ -1,13 +1,18 @@
 Davesblog::Application.routes.draw do
+  resources :site_settings
+
   resources :categories
 
   resources :tags
 
   resources :blogs
 
-  devise_for :users
+  #devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   
   match '/:id' => 'blogs#show'
+  
+  match "user/settings" => "user#settings"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

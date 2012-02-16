@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Caching:</b>
+  <%= @site_setting.caching %>
+</p>
+
+<p>
+  <b>Site name:</b>
+  <%= @site_setting.site_name %>
+</p>
+
+<p>
+  <b>Time zone:</b>
+  <%= @site_setting.time_zone %>
+</p>
+
+<p>
+  <b>Left sidebar:</b>
+  <%= @site_setting.left_sidebar %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_setting_path(@site_setting) %> |
+<%= link_to 'Back', site_settings_path %>

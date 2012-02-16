@@ -1,0 +1,10 @@
+<% content_for :title, "Settings -> "+@settings.site_name.to_s %>
+
+<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'settings'} %>
+<div class="span1">&nbsp;</div><div class="span1">&nbsp;</div>
+<div class="span8">
+	<p id="notice"><%= notice %></p>
+	<h2><%= link_to "Site Settings", :controller=> 'site_settings', :action=>'edit', :id=>'1' %></h2>
+<div class="span2">
+</div>
+<%= render 'layouts/footer' %>

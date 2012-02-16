@@ -1,0 +1,29 @@
+<h1>Listing site_settings</h1>
+
+<table>
+  <tr>
+    <th>Caching</th>
+    <th>Site name</th>
+    <th>Time zone</th>
+    <th>Left sidebar</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_settings.each do |site_setting| %>
+  <tr>
+    <td><%= site_setting.caching %></td>
+    <td><%= site_setting.site_name %></td>
+    <td><%= site_setting.time_zone %></td>
+    <td><%= site_setting.left_sidebar %></td>
+    <td><%= link_to 'Show', site_setting %></td>
+    <td><%= link_to 'Edit', edit_site_setting_path(site_setting) %></td>
+    <td><%= link_to 'Destroy', site_setting, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site setting', new_site_setting_path %>

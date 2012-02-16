@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  caching: 1
+  site_name: MyString
+  time_zone: MyString
+  left_sidebar: MyText
+
+two:
+  caching: 1
+  site_name: MyString
+  time_zone: MyString
+  left_sidebar: MyText

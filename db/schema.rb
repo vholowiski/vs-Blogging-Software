@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120212031822) do
+ActiveRecord::Schema.define(:version => 20120216004929) do
 
   create_table "blog_tags", :force => true do |t|
     t.integer  "blog_id"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(:version => 20120212031822) do
     t.datetime "updated_at",  :null => false
     t.integer  "blog_id"
     t.integer  "category_id"
+  end
+
+  create_table "site_settings", :force => true do |t|
+    t.integer  "caching",      :default => 0
+    t.string   "site_name",    :default => "My Blog"
+    t.string   "time_zone",    :default => "Mountain Time (US & Canada)"
+    t.text     "left_sidebar"
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.text     "disqus_code"
   end
 
   create_table "tags", :force => true do |t|

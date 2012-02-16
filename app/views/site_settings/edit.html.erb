@@ -1,0 +1,14 @@
+<% content_for :title, "Site Settings -> "+@settings.site_name.to_s %>
+
+<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'settings'} %>
+
+<div class="span1">&nbsp;</div><div class="span1">&nbsp;</div>
+	<div class="span8">
+	<h1>Change Site-Wide settings</h1>
+	<% if params[:notice] %>
+		<p><font color="red"><%= params[:notice] %></font></p>
+	  <% end %>
+	<%= render 'form' %>
+</div>
+<div class="span1">&nbsp;</div><div class="span1">&nbsp;</div>
+<%= render 'layouts/footer' %>

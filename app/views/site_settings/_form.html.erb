@@ -1,0 +1,36 @@
+<%= form_for(@site_setting) do |f| %>
+  <% if @site_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_setting.errors.count, "error") %> prohibited this site_setting from being saved:</h2>
+
+      <ul>
+      <% @site_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br/><br/>
+
+<div class="actions">
+    <%= f.submit value="Update Settings" %><br/><a class="btn" href="<%= '/user/settings/' %>">Back</a>
+  </div>
+  <div class="field">
+    Enable/Disable Caching: <%= f.check_box(:caching, options = {}, checked_value = "1", unchecked_value = "0") %>
+  </div>
+  
+  <div class="field">
+    Site Name: <%= f.text_field :site_name %>
+  </div>
+  <div class="field">
+    Default Time Zone: <%= time_zone_select("site_setting", "time_zone", nil, :default => "Pacific Time (US & Canada)" ) %>
+  </div>
+  <div class="field">
+    Left Sidebar (Use HTML Code)<br />
+    <%= f.text_area :left_sidebar %>
+  </div>
+    <div class="field">
+    Disqus (or other comment system) code<br />
+    <%= f.text_area :disqus_code %>
+  </div>
+<% end %>
