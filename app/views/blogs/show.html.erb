@@ -1,7 +1,15 @@
 <% content_for :title, @blog.title.to_s+" -> "+@settings.site_name.to_s %>
 
 <%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
-<div class="span1">&nbsp;</div><div class="span1">&nbsp;</div>
+<div class="span1">&nbsp;</div><div class="span1">
+<% if @settings.sharethis && @settings.sharethis !="" %>
+	<p>
+		<%= raw @settings.sharethis %>
+	</p>
+<% else %>
+&nbsp;
+<% end %>
+</div>
 <div class="span8">
 	<p id="notice"><%= notice %></p>
 	
@@ -31,11 +39,6 @@
 	<% end %>
 <% else %>
 	&nbsp;
-<% end %>
-<% if @settings.sharethis && @settings.sharethis !="" %>
-	<p>
-		<%= raw @settings.sharethis %>
-	</p>
 <% end %>
 <% if @settings.plusone && @settings.plusone !="" %>
 <br/>
