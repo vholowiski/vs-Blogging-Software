@@ -28,7 +28,7 @@
 			<%= raw @settings.disqus_code %>
 		<% end %>	
 	</div>
-	<div class="span1">
+	<div class="span2">
 	<% if @blog.tags.count >0 %>
 		<h2><b>Tagged: </b>
 		<% @blog.tags.each do |tag| %>
@@ -55,6 +55,5 @@
 	<%= raw @settings.facebook %>
 	<% end %>
 	</div>
-	<div class="span1">&nbsp;</div>
 <% end %>
 <%= render 'layouts/footer' %>
