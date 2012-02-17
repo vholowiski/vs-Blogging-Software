@@ -10,25 +10,22 @@
       </ul>
     </div>
   <% end %>
-<div class="field">
-    Draft only: <%= f.check_box(:isdraft, options = {}, checked_value = "1", unchecked_value = "0") %>
-  </div>
+<div class="draft_select">
+  <%= select(:blog, :isdraft, options_for_select([['Published', 0], ['Draft', 1]]), {}, {:class=>"span2"}) %> <%= f.submit "Save Post" %>
+</div>
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    Post Title: <%= f.text_area :title, :rows=>1, :cols=>200,:class=>"span8" %>
   </div>
 <div class="field">
-    Comma seperated categories:
+    Comma seperated categories: <% if @categories %> Exisitng Categories: <% @categories.each do |category| %><%=category.name %> | <% end %><% end %>
     <%= text_field_tag(:categories) %>
-    <% if @categories %> Exisitng Categories: <% @categories.each do |category| %><%=category.name %> | <% end %><% end %>
   </div>
   <div class="field">
-    <%= f.label :tags %><br />
-    <%= text_field_tag(:tags) %>
+    Tags: <%= text_field_tag(:tags) %>
   </div>
   <div class="field">
     <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
+    <%= f.text_area :summary, :rows=>40, :cols=>"40" %>
   </div>
   <div class="field">
     <%= f.label :body %><br />
