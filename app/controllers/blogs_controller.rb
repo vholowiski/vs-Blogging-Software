@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   
   def index
   	#in the index, simply don't show drafts. In other views, show drafts if they are yours
-    @blogs = Blog.find(:all, :conditions=> "isdraft=0") 
+    @blogs = Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 
 	@categories = Category.all(:order=> 'name') #sort categories alphabetically
 	
     respond_to do |format|
