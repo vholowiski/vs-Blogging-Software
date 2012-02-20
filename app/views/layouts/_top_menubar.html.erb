@@ -9,12 +9,14 @@
           <a class="brand" href="/"><%= @settings.site_name %></a>
           <div class="nav-collapse">
             <ul class="nav">
-            	<% @categories.each do |category| %>
-            		<li <% if current_page == category.name %>class="active"<% end %>><%= link_to category.name, :controller=> 'categories', :action=> 'show', :id=> category.to_param %></li>
-            	<% end %>
-            	<% if user_signed_in? %>
-					<li <% if current_page == "settings" %>class="active"<% end %>><%=link_to "Settings", :controller=>"user", :action=> "settings" %></li>
-					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+            	<% if @categories %>
+					<% @categories.each do |category| %>
+						<li <% if current_page == category.name %>class="active"<% end %>><%= link_to category.name, :controller=> 'categories', :action=> 'show', :id=> category.to_param %></li>
+					<% end %>
+					<% if user_signed_in? %>
+						<li <% if current_page == "settings" %>class="active"<% end %>><%=link_to "Settings", :controller=>"user", :action=> "settings" %></li>
+						<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+					<% end %>
 				<% end %>
             </ul>
           </div><!--/.nav-collapse -->

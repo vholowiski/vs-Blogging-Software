@@ -41,6 +41,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1/edit
   def edit
     @blog = Blog.find(params[:id])
+	@categories = Category.all(:order=> 'name') #sort categories alphabetically
   end
 
   # POST /blogs

@@ -11,7 +11,7 @@
     </div>
   <% end %>
 <div class="draft_select">
-  <%= select(:blog, :isdraft, options_for_select([['Published', 0], ['Draft', 1]]), {}, {:class=>"span2"}) %> <%= f.submit "Save Post" %>
+  <%= select(:blog, :isdraft, options_for_select([['Published', 0], ['Draft', 1]]), {}, {:class=>"span2"}) %> <%= f.submit "Save Post", :class=>"btn-primary" %>
 </div>
   <div class="field">
     Post Title: <%= f.text_area :title, :rows=>1, :cols=>200,:class=>"span8" %>
@@ -25,15 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :summary %><br />
-    <%= f.text_area :summary, :rows=>40, :cols=>"40" %>
+    <%= f.text_area :summary, :class=>"span8" %>
   </div>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.text_area :body, :class=>"span8" %>
   </div>
   <div class="actions">
     <%= f.submit %>

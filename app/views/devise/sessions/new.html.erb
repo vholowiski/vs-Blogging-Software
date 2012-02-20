@@ -1,3 +1,10 @@
+<% content_for :title, "Sign In -> "+@settings.site_name.to_s %>
+
+<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'sign_up'} %>
+
+<div class="span2">
+</div>	
+<div class="span8">
 <h2>Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -13,5 +20,7 @@
 
   <div><%= f.submit "Sign in" %></div>
 <% end %>
-
 <%= render :partial => "devise/shared/links" %>
+</div>
+<div class="span2">
+</div>	
