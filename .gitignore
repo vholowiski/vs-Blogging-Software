@@ -16,3 +16,6 @@
 
 /config/s3.yml
 /public/system/images/*
+
+#ignore the gemfile
+/Gemfile
