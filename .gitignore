@@ -6,7 +6,7 @@
 
 # Ignore bundler config
 /.bundle
-
+/Gemfile`
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -17,5 +17,3 @@
 /config/s3.yml
 /public/system/images/*
 
-#ignore the gemfile
-/Gemfile
