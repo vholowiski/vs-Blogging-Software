@@ -8,7 +8,7 @@ gem 'rails', '3.2.1'
 
 gem 'sqlite3'
 
-#gem 'pg'
+gem 'pg' 
 
 gem 'therubyracer'
 
