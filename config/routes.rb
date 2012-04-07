@@ -1,4 +1,6 @@
 Davesblog::Application.routes.draw do
+  resources :blog_images
+
   resources :site_settings
 
   resources :categories

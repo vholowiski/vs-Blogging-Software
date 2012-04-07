@@ -22,6 +22,9 @@
 		  <h1><%= @blog.title %></h1>
 		  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %></i></p>
 		<p>
+		<% if @blog.blog_image %>
+		<%= image_tag @blog.blog_image.image.url(:bs_small_thumb), :align=>'left' %>
+			<% end %>
 		  <%= @blog.body.html_safe %>
 		</p>
 		<% if @settings.disqus_code && @settings.disqus_code !="" %>

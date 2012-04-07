@@ -10,3 +10,8 @@ This administrator can then promote other users to administrators.
 
 *Make sure to go into Account Settings/Site Settings when signed in as administrator
 to set defaults such as the site name and the time zone.
+
+*To use image attachments with Amazon S3, create a config/s3.yml file with the following contents:
+# config/s3.yml 
+access_key_id: 
+secret_access_key: 

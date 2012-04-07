@@ -1,4 +1,20 @@
+
+
+<div class="span8">
+<h1>Editing blog</h1>
+
+
 <%= form_for(@blog) do |f| %>
+<div class="span2">
+<% if @blog_images %>
+	<h3>Main Image</h3>
+	<% @blog_images.each do |image| %>
+		<input type="radio" id="blog_image" name="blog_image" value="<%= image.id %>" /> Use Image Below<%= image_tag image.image.url(:bs_small_thumb) %><br /><br />
+	<% end %>
+<% else %>
+&nbsp;
+<% end %>
+</div>	
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
@@ -35,3 +51,8 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+</div>
+
+<div class="span2">&nbsp;
+</div>	

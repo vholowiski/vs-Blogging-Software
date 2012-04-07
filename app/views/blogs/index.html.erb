@@ -22,13 +22,13 @@
 				  <div class="row-fluid">
 					<div class="span4">
 					  <h2><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h2>
-					  <p><%= blog.summary %></p>
+					  <p><% if blog.blog_image %><%= image_tag blog.blog_image.image.url(:bs_small_thumb) %><% end %><%= blog.summary %></p>
 					  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
 					</div><!--/span-->
 			<% else %>
 				<div class="span4">
 				  <h2><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h2>
-				  <p><%= blog.summary %></p>
+				  <p><% if blog.blog_image %><%= image_tag blog.image.image.url(:bs_small_thumb) %><% end %><%= blog.summary %></p>
 				  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
 				</div><!--/span-->
 			<% end %>

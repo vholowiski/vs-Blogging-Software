@@ -29,6 +29,8 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   # GET /blogs/new.json
   def new
+    	@blog_images=BlogImage.find_all_by_user_id(current_user.id, :limit=>15, :order=> "created_at DESC")
+
   	@categories = Category.all
     @blog = Blog.new
 	@blog.user_id = current_user.id
@@ -42,13 +44,19 @@ class BlogsController < ApplicationController
   def edit
     @blog = Blog.find(params[:id])
 	@categories = Category.all(:order=> 'name') #sort categories alphabetically
+	@blog_images=BlogImage.find_all_by_user_id(current_user.id, :limit=>15, :order=> "created_at DESC")
   end
 
   # POST /blogs
   # POST /blogs.json
   def create
     @blog = Blog.new(params[:blog])
+	if params[:blog_image]
+  		@blog.blog_image_id = params[:blog_image].to_i
+  	end
 	@blog.user_id = current_user.id
+	@blog_images=BlogImage.find_all_by_user_id(current_user.id)
+	logger.debug "blog_image= "+params[:blog_image].to_s
     respond_to do |format|
       if @blog.save
 		if params[:categories]
@@ -125,6 +133,9 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
 	@blog.user_id = current_user.id
+	if params[:blog_image]
+  		@blog.blog_image_id = params[:blog_image].to_i
+  	end
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }

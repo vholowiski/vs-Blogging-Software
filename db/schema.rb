@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216032058) do
+ActiveRecord::Schema.define(:version => 20120221145217) do
+
+  create_table "blog_images", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "user_id"
+  end
 
   create_table "blog_tags", :force => true do |t|
     t.integer  "blog_id"
@@ -25,9 +34,12 @@ ActiveRecord::Schema.define(:version => 20120216032058) do
     t.text     "summary"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "isdraft"
+    t.integer  "mainimage_id"
+    t.integer  "blog_image_id"
+    t.integer  "blog_image"
   end
 
   create_table "categories", :force => true do |t|

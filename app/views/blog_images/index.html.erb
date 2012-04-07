@@ -1,0 +1,31 @@
+<h1>Listing blog_images</h1>
+
+<table>
+  <tr>
+  	<th></th>
+    <th>Image file name</th>
+    <th>Image content type</th>
+    <th>Image file size</th>
+    <th>ID</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @blog_images.each do |blog_image| %>
+  <tr>
+  	<td><%= image_tag blog_image.image.url(:bs_small_thumb) %></td>
+    <td><%= blog_image.image_file_name %></td>
+    <td><%= blog_image.image_content_type %></td>
+    <td><%= blog_image.image_file_size %></td>
+    <td><%= blog_image.id %></td>
+    <td><%= link_to 'Show', blog_image %></td>
+    <td><%= link_to 'Edit', edit_blog_image_path(blog_image) %></td>
+    <td><%= link_to 'Destroy', blog_image, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Blog image', new_blog_image_path %>
