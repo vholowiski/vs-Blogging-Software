@@ -17,7 +17,7 @@ gem 'therubyracer'
 gem 'twitter'
 gem 'devise'
 
-gem 'aws-s3'
+#gem 'aws-s3'
 gem 'paperclip'
 
 # Gems used only for assets and not required

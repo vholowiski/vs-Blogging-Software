@@ -31,7 +31,7 @@ Davesblog::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+   config.log_level = :warn
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -65,12 +65,12 @@ Davesblog::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  Paperclip::Attachment.default_options.merge!(
-  :storage => 's3',
-  :s3_credentials => YAML.load_file("#{Rails.root}/config/s3.yml"),
-  :path => ":class/:attachment/#{Rails.env}/:id/:style/:basename.:extension",
-    :default_url => "http://#{HOSTNAME}/images/paperclip/:class/:attachment/default.jpg",
-  :bucket => 'ganesha'
-)
+  #Paperclip::Attachment.default_options.merge!(
+  #:storage => 's3',
+  #:s3_credentials => YAML.load_file("#{Rails.root}/config/s3.yml"),
+  #:path => ":class/:attachment/#{Rails.env}/:id/:style/:basename.:extension",
+  #  :default_url => "http://zeroxtenc.com/images/paperclip/:class/:attachment/default.jpg",
+  #:bucket => 'ganesha'
+#)
 
 end
