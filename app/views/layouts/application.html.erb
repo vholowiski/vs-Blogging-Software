@@ -32,7 +32,12 @@
 <% if @settings.sharethis_head && @settings.sharethis_head != "" %>
 <%= raw @settings.sharethis_head %>
 <% end %>
-
+<% if yield(:summary) && yield(:summary) != "" %>
+	<meta name="description" content="<%= yield(:summary).strip %>" />
+<% end %>
+<% if yield(:canonical) && yield(:canonical) != "" %>
+	<link rel="canonical" href="<%= yield(:canonical) %>"/>
+<% end %>
 </head>
 <body>
 

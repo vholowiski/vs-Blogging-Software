@@ -1,4 +1,8 @@
 <% content_for :title, @blog.title.to_s+" -> "+@settings.site_name.to_s %>
+<% if @blog.summary && @blog.summary != "" %>
+	<% content_for :summary, @blog.summary.to_s %>
+<% end %>
+<% content_for :canonical, request.protocol + request.host_with_port + "/" + @blog.to_param %>
 
 <%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
 <% if @blog.isdraft == 0 || (current_user && current_user.id==@blog.id)%>
