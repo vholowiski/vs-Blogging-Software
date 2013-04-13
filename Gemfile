@@ -6,15 +6,16 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'sqlite3'
+#gem 'sqlite3'
 
-gem 'pg' 
+#gem 'pg' 
+gem 'mysql2'
 
 #gem 'mysql'
 
 gem 'therubyracer'
 
-gem 'twitter'
+#gem 'twitter'
 gem 'devise'
 
 #gem 'aws-s3'
