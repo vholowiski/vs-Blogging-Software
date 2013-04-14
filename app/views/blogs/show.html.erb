@@ -1,21 +1,23 @@
 <% content_for :title, @blog.title.to_s+" -> "+@settings.site_name.to_s %>
-<% if @blog.summary && @blog.summary != "" %>
-	<% content_for :summary, @blog.summary.to_s %>
-<% end %>
-<% content_for :canonical, request.protocol + request.host_with_port + "/" + @blog.to_param %>
 
-<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
+<% content_for :head do %>
+	<% if @blog && @blog.summary && @blog.summary != "" %><meta name="description" content="<%= @blog.summary %>"><% end %>
+	<link rel="canonical" href="<%= request.protocol + request.host_with_port + "/" + @blog.to_param %>"/>
+<% end %>
+
 <% if @blog.isdraft == 0 || (current_user && current_user.id==@blog.id)%>
-	
+
+<div class="row-fluid">
 	<div class="span1">	
 	<% if @settings.sharethis && @settings.sharethis !="" %>
-		<p>
+		<p class="hidden-phone">
 			<%= raw @settings.sharethis %>
 		</p>
 	<% else %>
 		&nbsp;
 	<% end %>
-	</div><div class="span1">
+	</div>
+	<div class="span1">
 		&nbsp;
 	</div>
 	<div class="span8">
@@ -24,7 +26,7 @@
 		<h1><font color="red">This Post is a Draft. Only you can see it</font></h1>
 		<% end %>
 		  <h1><%= @blog.title %></h1>
-		  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %></i></p>
+		  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %> by <% if @blog.user.first_name && @blog.user.first_name != "" %><%= @blog.user.first_name %> <% end %><% if @blog.user.last_name && @blog.user.last_name != "" %><%= @blog.user.last_name %><% end %> - <% if @blog.user.gplus_url && @blog.user.gplus_url != "" %><%= link_to "Google", @blog.user.gplus_url, :rel=>"author" %><% end %> Plus Profile</i></p>
 		<p>
 		<% if @blog.blog_image %>
 		<%= image_tag @blog.blog_image.image.url(:bs_small_thumb), :align=>'left' %>
@@ -37,19 +39,21 @@
 	</div>
 	<div class="span2">
 	<% if @blog.tags.count >0 %>
-		<h2><b>Tagged: </b>
-		<% @blog.tags.each do |tag| %>
+		<h2><strong>Tagged: </strong></h2>
+		<h3><% @blog.tags.each do |tag| %>
 			<%= link_to tag.tag, :controller=>'tags', :action=>'show', :id=> tag.to_param  %> 
 		<% end %>
-		</h2>
+		</h3>
 		<br/>
 	<% else %>
 		&nbsp;
 	<% end %>
+	<h2>Categories</h2>
 	<% if @blog.categories.count > 0 %>
-		<% @blog.categories.each do |category| %>
-			<h3><%= link_to category.name, :controller=>'categories', :action=>'show', :id=> category.to_param %></h3>
+		<h3><% @blog.categories.each do |category| %>
+			<%= link_to category.name, :controller=>'categories', :action=>'show', :id=> category.to_param %>
 		<% end %>
+		</h3>
 	<% else %>
 		&nbsp;
 	<% end %>
@@ -62,5 +66,7 @@
 	<%= raw @settings.facebook %>
 	<% end %>
 	</div>
+</div>
 <% end %>
+
 <%= render 'layouts/footer' %>

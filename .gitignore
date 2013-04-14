@@ -18,3 +18,4 @@
 /public/system/images/*
 
 /config/database.yml
+.DS_Store

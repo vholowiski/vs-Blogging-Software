@@ -1,7 +1,5 @@
 <% content_for :title, "New Post -> "+@settings.site_name.to_s %>
 
-<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'newpost'} %>
-
 <%= render 'form' %>
 
 <%= render 'layouts/footer' %>

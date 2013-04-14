@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -6,12 +6,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/"><%= @settings.site_name %></a>
-          <div class="nav-collapse">
+          <%= link_to @settings.site_name, '/', :class=> 'brand' %>
+          <div class="nav-collapse collapse">
             <ul class="nav">
-            	<% if @categories %>
-					<% @categories.each do |category| %>
-						<li <% if current_page == category.name %>class="active"<% end %>><%= link_to category.name, :controller=> 'categories', :action=> 'show', :id=> category.to_param %></li>
+            	<% if @menubar_categories %>
+					<% @menubar_categories.each do |category| %>
+						<li <% if current_page == category.name %>class="active"<% end %>><%= link_to category.name, :controller=> '/categories', :action=> 'show', :id=> category.to_param %></li>
 					<% end %>
 					<% if user_signed_in? %>
 						<li <% if current_page == "settings" %>class="active"<% end %>><%=link_to "Settings", :controller=>"user", :action=> "settings" %></li>
@@ -22,4 +22,4 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>
+</div>

@@ -14,6 +14,7 @@ private
 			@settings=SiteSetting.new
 			@settings.save
 		end
+		@menubar_categories=Category.all()
 		logger.debug "Just got site settings, see? "+@settings.site_name.to_s
 	end
 

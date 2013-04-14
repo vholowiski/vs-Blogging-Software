@@ -7,5 +7,8 @@
   */
   
   body {
-	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	padding-top: 50px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+#brand hover {
+	background-color: "#ffffff";
 }

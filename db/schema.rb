@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221145217) do
+ActiveRecord::Schema.define(:version => 20130414145304) do
 
   create_table "blog_images", :force => true do |t|
     t.string   "image_file_name"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(:version => 20120221145217) do
     t.text     "summary"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "isdraft"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "isdraft",       :default => 0
     t.integer  "mainimage_id"
     t.integer  "blog_image_id"
     t.integer  "blog_image"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(:version => 20120221145217) do
     t.integer  "is_admin",                              :default => 0
     t.integer  "is_author",                             :default => 0
     t.integer  "is_commentor",                          :default => 1
+    t.string   "gplus_url"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

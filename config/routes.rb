@@ -15,7 +15,8 @@ Davesblog::Application.routes.draw do
   match '/:id' => 'blogs#show'
   
   match "user/settings" => "user#settings"
-
+  match 'user/update' => 'user#update', :as=>'user/update', :via=>'put'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

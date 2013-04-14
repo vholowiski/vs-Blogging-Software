@@ -39,7 +39,6 @@ before_filter :authenticate_user!
 
   # GET /site_settings/1/edit
   def edit
-  	@categories = Category.all(:order=> 'name') #sort categories alphabetically
     @site_setting = SiteSetting.find(params[:id])
   end
 

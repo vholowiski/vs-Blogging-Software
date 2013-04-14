@@ -1,10 +1,5 @@
 <% content_for :title, "Editing Post -> "+@settings.site_name.to_s %>
 
-<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'edit_post'} %>
-
-
 <%= render 'form' %>
-
-
 
 <%= render 'layouts/footer' %>

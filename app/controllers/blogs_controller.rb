@@ -6,9 +6,7 @@ class BlogsController < ApplicationController
   
   def index
   	#in the index, simply don't show drafts. In other views, show drafts if they are yours
-    @blogs = Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 
-	@categories = Category.all(:order=> 'name') #sort categories alphabetically
-	
+    @blogs = Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 	
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }
@@ -19,7 +17,6 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @blog = Blog.find(params[:id])
-	@categories = Category.all(:order=> 'name') #sort categories alphabetically
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @blog }
@@ -31,7 +28,6 @@ class BlogsController < ApplicationController
   def new
     	@blog_images=BlogImage.find_all_by_user_id(current_user.id, :limit=>15, :order=> "created_at DESC")
 
-  	@categories = Category.all
     @blog = Blog.new
 	@blog.user_id = current_user.id
     respond_to do |format|
@@ -43,7 +39,6 @@ class BlogsController < ApplicationController
   # GET /blogs/1/edit
   def edit
     @blog = Blog.find(params[:id])
-	@categories = Category.all(:order=> 'name') #sort categories alphabetically
 	@blog_images=BlogImage.find_all_by_user_id(current_user.id, :limit=>15, :order=> "created_at DESC")
   end
 

@@ -1,7 +1,5 @@
 <% content_for :title, "Home -> "+@settings.site_name %>
 
-<%= render :partial=> 'layouts/top_menubar', :locals=> {:categories=> @categories, :current_page=> 'home'} %>
-
 <div class="container-fluid">
   <div class="row-fluid">
   	<%= render :partial=> 'layouts/sidebar' %>
