@@ -33,6 +33,11 @@
 			<% end %>
 		  <%= @blog.body.html_safe %>
 		</p>
+	<div class="visible-phone">
+	<% if @settings.sharethis_mobile && @settings.sharethis_mobile != "" %>
+		<%= raw @settings.sharethis_mobile %>
+	<% end %>
+	</div>
 		<% if @settings.disqus_code && @settings.disqus_code !="" %>
 			<%= raw @settings.disqus_code %>
 		<% end %>	
