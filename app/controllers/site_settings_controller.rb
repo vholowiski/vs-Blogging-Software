@@ -40,6 +40,7 @@ before_filter :authenticate_user!
   # GET /site_settings/1/edit
   def edit
     @site_setting = SiteSetting.find(params[:id])
+    @categories=Category.all
   end
 
   # POST /site_settings

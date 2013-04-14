@@ -14,7 +14,15 @@ private
 			@settings=SiteSetting.new
 			@settings.save
 		end
-		@menubar_categories=Category.all()
+		if @settings.menu_categories && @settings.menu_categories != ""
+			categories=@settings.menu_categories.split(",").collect{ |s| s.to_i }
+			categories.each do |c|
+				logger.debug "c "+c.to_s
+			end
+			@menubar_categories=Category.find_all_by_id(categories)
+		else
+			@menubar_categories=Category.all()
+		end
 		logger.debug "Just got site settings, see? "+@settings.site_name.to_s
 	end
 

@@ -13,7 +13,7 @@
 <br/><br/>
 
 <div class="actions">
-    <%= f.submit value="Update Settings" %><br/><a class="btn" href="<%= '/user/settings/' %>">Back</a>
+    <%= f.submit value="Update Settings", :class=> 'btn btn-primary' %><a class="btn btn-primary" href="<%= '/user/settings/' %>">Back</a>
   </div>
   <div class="field">
     Enable/Disable Caching: <%= f.check_box(:caching, options = {}, checked_value = "1", unchecked_value = "0") %>
@@ -24,6 +24,11 @@
   </div>
   <div class="field">
     Default Time Zone: <%= time_zone_select("site_setting", "time_zone", nil, :default => "Pacific Time (US & Canada)" ) %>
+  </div>
+  <div class="field">
+  	Menubar Categories - comman seperated (leave empty to show all) <%= f.text_field :menu_categories, :placeholder=> 'eg: 1,2,3' %>
+  <br/>
+  Category id's: <% @categories.each do |cat| %><%= cat.name %>:<%= cat.id %>,<% end %>
   </div>
   <div class="field">
     Left Sidebar (Use HTML Code)<br />
