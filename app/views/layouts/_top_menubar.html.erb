@@ -13,6 +13,9 @@
 					<% @menubar_categories.each do |category| %>
 						<li <% if current_page == category.name %>class="active"<% end %>><%= link_to category.name, :controller=> '/categories', :action=> 'show', :id=> category.to_param %></li>
 					<% end %>
+					<% if @select_menu_items %>
+						<li><%= link_to "More", categories_path %></li>
+					<% end %>
 					<% if user_signed_in? %>
 						<li <% if current_page == "settings" %>class="active"<% end %>><%=link_to "Settings", :controller=>"user", :action=> "settings" %></li>
 						<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>

@@ -16,9 +16,8 @@ private
 		end
 		if @settings.menu_categories && @settings.menu_categories != ""
 			categories=@settings.menu_categories.split(",").collect{ |s| s.to_i }
-			categories.each do |c|
-				logger.debug "c "+c.to_s
-			end
+			#and set a flag
+			@select_menu_items=true
 			@menubar_categories=Category.find_all_by_id(categories)
 		else
 			@menubar_categories=Category.all()
