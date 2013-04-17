@@ -7,6 +7,7 @@ Davesblog::Application.routes.draw do
 
   resources :tags
 
+  match 'blogs/fix_blank_published_dates' => 'blogs#fix_blank_published_dates'
   resources :blogs
 
   #devise_for :users
@@ -16,6 +17,7 @@ Davesblog::Application.routes.draw do
   
   match "user/settings" => "user#settings"
   match 'user/update' => 'user#update', :as=>'user/update', :via=>'put'
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

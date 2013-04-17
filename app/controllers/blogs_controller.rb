@@ -159,4 +159,18 @@ class BlogsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def fix_blank_published_dates
+  #this is just a temporary function
+  #if you created blogs before the published field was added
+  #this will fix it by adding a proper published date to all of the posts
+  	@blogs=Blog.all
+  	@blogs.each do |blog|
+  		if !blog.published
+  			blog.published=blog.created_at
+  			blog.save
+  		end
+  	end
+  end
+  
 end
