@@ -40,7 +40,7 @@ private
 			Blog.find(:all, :order=>"published desc") 	
 		else
 			logger.debug "not returning drafts"
-			Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 	
+			Blog.find(:all, :conditions=> "isdraft=0", :order=>"published desc") 	
 		end
 	end
 	
