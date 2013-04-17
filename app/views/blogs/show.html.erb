@@ -26,7 +26,8 @@
 		<h1><font color="red">This Post is a Draft. Only you can see it</font></h1>
 		<% end %>
 		  <h1><%= @blog.title %></h1>
-		  <p><i>Posted on <%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %> by <% if @blog.user.first_name && @blog.user.first_name != "" %><%= @blog.user.first_name %> <% end %><% if @blog.user.last_name && @blog.user.last_name != "" %><%= @blog.user.last_name %><% end %> - <% if @blog.user.gplus_url && @blog.user.gplus_url != "" %><%= link_to "Google", @blog.user.gplus_url, :rel=>"author" %><% end %> Plus Profile</i></p>
+		  <p><i>Posted on <% if @blog.published && @blog.published != "" %><%= @blog.published.strftime("%A %B %d %Y, at %I:%M %p")+" "+@settings.time_zone %><% else %><%= @blog.created_at.strftime("%A %B %d, at %I:%M %p")+" "+@settings.time_zone %><% end %> by <% if @blog.user.first_name && @blog.user.first_name != "" %><%= @blog.user.first_name %> <% end %>
+		  <% if @blog.user.last_name && @blog.user.last_name != "" %><%= @blog.user.last_name %><% end %> - <% if @blog.user.gplus_url && @blog.user.gplus_url != "" %><%= link_to "Google", @blog.user.gplus_url, :rel=>"author" %> Plus Profile</i><% end %></p>
 		<p>
 		<% if @blog.blog_image %>
 		<%= image_tag @blog.blog_image.image.url(:bs_small_thumb), :align=>'left' %>

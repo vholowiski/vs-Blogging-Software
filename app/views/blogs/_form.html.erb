@@ -25,7 +25,11 @@
     </div>
   <% end %>
 <div class="draft_select">
-  <%= select(:blog, :isdraft, options_for_select([['Published', 0], ['Draft', 1]]), {}, {:class=>"span2"}) %> <%= f.submit "Save Post", :class=>"btn-primary" %>
+  <%= select(:blog, :isdraft, options_for_select([['Published', 0], ['Draft', 1]]), {}, {:class=>"span2"}) %> 
+  <%= f.submit "Save Post", :class=>"btn btn-primary" %>
+</div>
+<div class="published_select">
+	<%= f.datetime_select :published %>
 </div>
   <div class="field">
     Post Title: <%= f.text_area :title, :rows=>1, :cols=>200,:class=>"span8" %>

@@ -26,9 +26,11 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   # GET /blogs/new.json
   def new
-    	@blog_images=BlogImage.find_all_by_user_id(current_user.id, :limit=>15, :order=> "created_at DESC")
+    @blog_images=BlogImage.find_all_by_user_id(current_user.id, :limit=>15, :order=> "created_at DESC")
 
     @blog = Blog.new
+    #default published date to right now
+    @published=DateTime.now
 	@blog.user_id = current_user.id
     respond_to do |format|
       format.html # new.html.erb

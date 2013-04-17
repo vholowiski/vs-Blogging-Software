@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414181256) do
+ActiveRecord::Schema.define(:version => 20130417003007) do
 
   create_table "blog_images", :force => true do |t|
     t.string   "image_file_name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130414181256) do
     t.integer  "mainimage_id"
     t.integer  "blog_image_id"
     t.integer  "blog_image"
+    t.datetime "published"
   end
 
   create_table "categories", :force => true do |t|
