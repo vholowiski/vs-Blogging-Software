@@ -3,10 +3,14 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   
   before_filter :authenticate_user!, :except=> [:index, :show]
-  
   def index
   	#in the index, simply don't show drafts. In other views, show drafts if they are yours
-    @blogs = Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 	
+    #@blogs = Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 	
+    if params[:show_drafts]=="true"
+		@blogs=find_posts(true)
+	else
+		@blogs=find_posts(false)
+	end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }

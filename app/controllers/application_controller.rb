@@ -28,4 +28,20 @@ private
 	def set_user_time_zone
 	  Time.zone = @settings.time_zone
 	end
+	
+	
+	def find_posts(return_drafts)
+	if return_drafts
+		logger.debug "return_drafts exist and true"
+	end
+		#original query: Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc")
+		if (defined? return_drafts) && return_drafts==true && current_user && current_user.is_admin
+			logger.debug "returning drafts"
+			Blog.find(:all, :order=>"published desc") 	
+		else
+			logger.debug "not returning drafts"
+			Blog.find(:all, :conditions=> "isdraft=0", :order=>"created_at desc") 	
+		end
+	end
+	
 end
