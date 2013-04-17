@@ -4,34 +4,38 @@
   <div class="row-fluid">
   	<%= render :partial=> 'layouts/sidebar' %>
    <div class="span9">
-   	<% @blogs.each_with_index do |blog, index| %>
-   		<% if index==0 %>
-		  <div class="hero-unit">
-			<h1><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h1>
-			<p><%= blog.summary %></p>
-			<p><a class="btn btn-primary btn-large" href="<%= '/'+ blog.to_param %>">Read</a></p>
-		  </div>
-   		<% else %>
-			<% if ((index-1) % 3)==0 %>
-				  <% if index==1 %>
-				  <% else %>
-				  	</div>
-				  <% end %>
-				  <div class="row-fluid">
+   	<% if @blogs && @blogs.count > 0 %>
+		<% @blogs.each_with_index do |blog, index| %>
+			<% if index==0 %>
+			  <div class="hero-unit">
+				<h1><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h1>
+				<p><%= blog.summary %></p>
+				<p><a class="btn btn-primary btn-large" href="<%= '/'+ blog.to_param %>">Read</a></p>
+			  </div>
+			<% else %>
+				<% if ((index-1) % 3)==0 %>
+					  <% if index==1 %>
+					  <% else %>
+						</div>
+					  <% end %>
+					  <div class="row-fluid">
+						<div class="span4">
+						  <h2><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h2>
+						  <p><% if blog.blog_image %><%= image_tag blog.blog_image.image.url(:bs_small_thumb), :align=>'left' %><% end %><%= blog.summary %></p>
+						  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
+						</div><!--/span-->
+				<% else %>
 					<div class="span4">
 					  <h2><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h2>
-					  <p><% if blog.blog_image %><%= image_tag blog.blog_image.image.url(:bs_small_thumb), :align=>'left' %><% end %><%= blog.summary %></p>
+					  <p><% if blog.blog_image %><%= image_tag blog.image.image.url(:bs_small_thumb), :align=>'left' %><% end %><%= blog.summary %></p>
 					  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
 					</div><!--/span-->
-			<% else %>
-				<div class="span4">
-				  <h2><a href="<%= '/'+ blog.to_param %>"><%= blog.title %></a></h2>
-				  <p><% if blog.blog_image %><%= image_tag blog.image.image.url(:bs_small_thumb), :align=>'left' %><% end %><%= blog.summary %></p>
-				  <p><a class="btn" href="<%= '/'+ blog.to_param %>">View details &raquo;</a></p>
-				</div><!--/span-->
+				<% end %>
 			<% end %>
-   		<% end %>
-   	<% end %>
+		<% end %>
+	<% else %>
+		No Blogs were found
+	<% end %>
    	</div>
 
 	</div><!--/span-->

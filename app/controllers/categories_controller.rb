@@ -15,7 +15,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.find(params[:id])
+    #@category = Category.find(params[:id])
+    params[:category]=params[:id]
+    @blogs=@blogs=find_posts(params)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @category }

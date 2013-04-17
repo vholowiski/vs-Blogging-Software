@@ -6,9 +6,9 @@
 <div class="span8">
 <p id="notice"><%= notice %></p>
 
-<center><h1><%= @category.name %></h1></center>
+<center><h1>Category name here</h1></center>
 
-<% @category.blogs.each do |blog| %>
+<% @blogs.each do |blog| %>
 	<% if blog.isdraft == 0 %>
 	  <h2><%= link_to blog.title,  '/'+blog.to_param %></h2>
 	  <p><%= blog.summary %></p>
